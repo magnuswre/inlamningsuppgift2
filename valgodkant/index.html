@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Validering av formulär</title>
+</head>
+<body>
+  <div class="wrapper">
+
+    <form id="validationForm" class="validation-form">
+      <div class="headline">
+        <h1>Validation Form</h1>
+      </div>
+      <div class="form-content">
+
+        <div class="input-group">
+          <label for="firstName" class="input-label">First Name:</label>
+          <input type="text" id="firstName" class="form-control">
+          
+        </div>
+
+        <div class="input-group">
+          <label for="lastName" class="input-label">Last Name:</label>
+          <input type="text" id="lastName" class="form-control">
+          
+        </div>
+
+        <div class="input-group">
+          <label for="email" class="input-label">Email:</label>
+          <input type="text" id="email" class="form-control">
+          
+        </div>
+
+        <div class="input-group">
+          <label for="password" class="input-label">Password:</label>
+          <input type="password" id="password" class="form-control">
+          
+        </div>
+
+        <div class="input-group">
+          <label for="repeatPassword" class="input-label">Repeat Password:</label>
+          <input type="password" id="repeatPassword" class="form-control">
+          
+        </div>
+
+        <div class="input-group">
+          <input type="checkbox" id="terms">
+          <label for="terms">Accept terms and conditions</label>
+          
+        </div>
+
+        <div>
+          <button class="btn btn-block btn-primary">Validate</button>
+        </div>
+
+      </div>
+
+      <div class="validation-feedback">
+        <p id="errorMessage" class="d-none">Alla fält måste vara korrekt ifyllda!</p>
+      </div>
+
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+<!-- Förhindra sidan att laddas om när formuläret ska valideras.
+Validera alla fälten så att alla fält måste ha ett innehåll och checkrutan måste klickas i
+Om något av fälten inte är ifyllda eller checkrutan inte är iklickad så ska du logga ett felmeddelande i consolen där du skriver att någonting har gått fel.
+Om valideringen går igenom så ska du istället logga ut ett success meddelande i consolen och skapa ett user objekt som har följande fält: firstName, lastName, email, password. Detta objekt ska också skrivas ut i consolen
+
+
+
+
+För väl godkänt ska du även göra följande:
+
+
+
+Alla fälten ska valideras så att korrekt information skriv in. ( email måste vara en emailadress, lösenorden måste matcha varandra samt ha en längd på minst 6 och ett namn ska inte få vara kortare än 2 bokstäver samt inte innehålla några siffror)
+Om det är något fel i valideringen så ska du visa texten i validation-feedback diven längst ner i formuläret genom att ta bort klassen d-none på p taggen.
+Du ska även consol logga ett meddelande med vilket av fälten som inte är korrekt ifyllda.
+När man har fyllt i alla fälten korrekt och trycker på "validate" så ska du dölja felmeddelandet längst ner igen och även skriva ut ett success meddelande i consolen och skapa ett user objekt som har följande fält: firstName, lastName, email, password. Detta objekt ska också skrivas ut i consolen -->
