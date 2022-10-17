@@ -1,4 +1,4 @@
-const form = document.getElementById('validationForm') // Hämta hela formuläret
+let form = document.getElementById('validationForm') // Hämta hela formuläret
 const btn = document.querySelector('.btn')
 let forName = document.getElementById('firstName')
 let lastName = document.getElementById('lastName')
@@ -14,6 +14,7 @@ const errorMessage = document.getElementById('errorMessage')
 form.addEventListener('submit', (e)=>{
     e.preventDefault(); 
     valideraInput()
+    
   
 })
 
@@ -28,6 +29,20 @@ const checkNumber = onlyAlphabeth => {
 return noNumber.test(String(onlyAlphabeth))
 }
 
+const checkError = document.querySelector('.d-none')
+
+const setError = () => {
+    checkError.classList.remove('d-none')
+
+}
+
+const setSuccess = () => {
+    checkError.classList.add('d-none') 
+}
+
+
+
+
 const valideraInput = () => {
 
     const fornameValue = forName.value.trim()
@@ -36,54 +51,72 @@ const valideraInput = () => {
     const passwordValue = password.value.trim()
     const repeatPasswordValue = repeatPassword.value.trim()
     const checkbox = document.getElementById('terms')
+    
+    if(fornameValue.length < 2){
+        console.log("First Name måste ha minst två bostäver och inga siffror")
+        setError()
+        return
+    } else {
+        setSuccess()
+    }
 
-     if(fornameValue.length < 2){
-        form.classList.add('.d-none')  
-        console.log("Förnamnet måste ha minst två bostäver")
-        return 
-    } 
 
     if(checkNumber(fornameValue)){
-        console.log('Förnamn får ej innehålla siffror')
+        console.log('First Name får ej innehålla siffror')
+        setError()
         return
+    } else {
+        setSuccess()
     }
-     
+
     if(lastnameValue.length < 2){
-        console.log("Efternamnet måste ha minst två bostäver")
+        console.log("Last Name måste ha minst två bostäver")
+        setError()
         return
-    } 
+    } else {
+        setSuccess()
+    }
 
     if(checkNumber(lastnameValue)){
-        console.log('Efternamn får ej innehålla siffror')
+        console.log('Last Name får ej innehålla siffror')
+        setError()
         return
-    }     
+    }  else {
+        setSuccess()
+    }   
 
     if(!isValidEmail(emailValue)){
-        console.log("email måste vara ett giltigt format")
+        console.log("Email måste vara ett giltigt format")
+        setError()
         return
+    } else {
+        setSuccess()
     }
 
     if(passwordValue.length < 6){
-        console.log('lösenordet måste 6 ha minst tecken')
+        console.log('Password måste 6 ha minst tecken')
+        setError()
         return
+    } else {
+        setSuccess()
     }
 
-    // if(repeatPasswordValue === ""){
-    //     console.log('Repetera lösenordet!')
-    //     return
-    // }
-
     if(passwordValue !== repeatPasswordValue){
-        console.log('lösenordet matchar inte')
+        console.log('Password matchar inte')
+        setError()
         return
-        
+    } else {
+        setSuccess()
     }
 
     if(!checkbox.checked){
-        console.log("glöm inte att kryssa i rutan")
-    }   
-
-
+        console.log("Accept terms and conditions")
+        setError()
+        return
+    } else {
+        setSuccess()
+    }
+    
     const validationForm = {
 
         forName:forName.value,
@@ -91,7 +124,7 @@ const valideraInput = () => {
         email:email.value,
         password:password.value,
 } 
-
+     
     console.log(validationForm)
     console.log(JSON.stringify(validationForm))
 }
