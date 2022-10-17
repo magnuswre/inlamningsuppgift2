@@ -1,21 +1,13 @@
-let form = document.getElementById('validationForm') // Hämta hela formuläret
-const btn = document.querySelector('.btn')
+let form = document.getElementById('validationForm') 
 let forName = document.getElementById('firstName')
 let lastName = document.getElementById('lastName')
 let email = document.getElementById('email')
 let password = document.getElementById('password')
 let repeatPassword = document.getElementById('repeatPassword')
 
-
-let validationFeedback = document.querySelector('.validation-feedback')
-
-const errorMessage = document.getElementById('errorMessage')
-
 form.addEventListener('submit', (e)=>{
     e.preventDefault(); 
     valideraInput()
-    
-  
 })
 
 const isValidEmail = email => {
@@ -23,24 +15,20 @@ const isValidEmail = email => {
     return regEx.test(String(email).toLocaleLowerCase()); 
 }
 
-const checkNumber = onlyAlphabeth => {
- const noNumber = /[0-9]+/g
-//  console.log(noNumber) 
-return noNumber.test(String(onlyAlphabeth))
+const checkNumber = onlyAlphabet => {
+    const noNumber = /[0-9]+/g
+    return noNumber.test(String(onlyAlphabet))
 }
 
 const checkError = document.querySelector('.d-none')
 
 const setError = () => {
     checkError.classList.remove('d-none')
-
 }
 
 const setSuccess = () => {
     checkError.classList.add('d-none') 
 }
-
-
 
 
 const valideraInput = () => {
@@ -52,7 +40,7 @@ const valideraInput = () => {
     const repeatPasswordValue = repeatPassword.value.trim()
     const checkbox = document.getElementById('terms')
     
-    if(fornameValue.length < 2){
+    if(fornameValue.length < 2 || checkNumber(fornameValue)){
         console.log("First Name måste ha minst två bostäver och inga siffror")
         setError()
         return
@@ -60,30 +48,13 @@ const valideraInput = () => {
         setSuccess()
     }
 
-
-    if(checkNumber(fornameValue)){
-        console.log('First Name får ej innehålla siffror')
+    if(lastnameValue.length < 2 || checkNumber(lastnameValue)){
+        console.log("Last Name måste ha minst två bostäver och inga siffror")
         setError()
         return
     } else {
         setSuccess()
     }
-
-    if(lastnameValue.length < 2){
-        console.log("Last Name måste ha minst två bostäver")
-        setError()
-        return
-    } else {
-        setSuccess()
-    }
-
-    if(checkNumber(lastnameValue)){
-        console.log('Last Name får ej innehålla siffror')
-        setError()
-        return
-    }  else {
-        setSuccess()
-    }   
 
     if(!isValidEmail(emailValue)){
         console.log("Email måste vara ett giltigt format")
@@ -130,7 +101,21 @@ const valideraInput = () => {
 }
 
 
+
+//-------------SLUT------------------//
+
+// if(checkNumber(fornameValue)){
+    //     console.log('First Name får ej innehålla siffror')
+    //     setError()
+    //     return
+    // } else {
+    //     setSuccess()
+    // }
   
-
-
-
+// if(checkNumber(lastnameValue)){
+    //     console.log('Last Name får ej innehålla siffror')
+    //     setError()
+    //     return
+    // }  else {
+    //     setSuccess()
+    // }   
