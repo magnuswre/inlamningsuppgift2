@@ -87,6 +87,8 @@ const valideraInput = () => {
     } else {
         setSuccess()
     }
+
+    
     
     const validationForm = {
 
@@ -94,10 +96,16 @@ const valideraInput = () => {
         lastName:lastName.value,
         email:email.value,
         password:password.value,
-} 
-     
-    console.log(validationForm)
-    console.log(JSON.stringify(validationForm))
+
+    } 
+    
+    console.log(`Grattis! Formuläret skickat med:
+    Förnamn: ${validationForm.forName} 
+    Efternamn: ${validationForm.lastName}
+    Email: ${validationForm.email} 
+    Password: ${validationForm.password}`)
+    // console.log(JSON.stringify(validationForm))
+    
 }
 
 
